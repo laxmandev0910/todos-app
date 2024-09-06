@@ -1,0 +1,13 @@
+{
+  "resources/theme/css/style.css": {
+    "file": "assets/style-BqdABEKj.css",
+    "src": "resources/theme/css/style.css",
+    "isEntry": true
+  },
+  "resources/theme/js/script.js": {
+    "file": "assets/script-DsDUR0XJ.js",
+    "name": "script",
+    "src": "resources/theme/js/script.js",
+    "isEntry": true
+  }
+}

@@ -1,0 +1,1 @@
+<td {{ $attributes->merge(['class' => 'py-2 px-4 border-b']) }}><span x-text="{{$data}}"></span></td>
