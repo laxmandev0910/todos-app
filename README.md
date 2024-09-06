@@ -4,8 +4,14 @@ A user friendly blog management website that provide a clean and minimalistic pl
 
 ## **Features**
 
-- Task's list managemnt
+- Task's list management
 - Fully ajax
+
+## **Framework and Library**
+
+- Laravel Version: 9.x.x
+- Tailwind Css: 3.x.x
+- Alpine.js: 3.x.x
 
 ## **Requirements**
 
@@ -23,7 +29,7 @@ A user friendly blog management website that provide a clean and minimalistic pl
 6.  Create a new mariadb database and update the `.env` file with your database credentials
 7.  Run migrations: `php artisan migrate`
 8.  Build Assets if Need: `npm run build:app`
-9.  Start the app
+9.  Start the app using `php artisan serve`
 
 ## **License**
 
