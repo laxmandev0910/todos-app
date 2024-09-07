@@ -134,12 +134,12 @@
             });
             let result = await response.json();
             if (!response.ok) {
-              this.showFlashMsg(result.error);
+              this.showFlashMsg(getError(result));
               return;
             }
             this.taskList = result.data;
           } catch (e) {
-            console.error(e);
+            this.showFlashMsg(this.getError(e));
           }
         },
 
@@ -161,13 +161,13 @@
             this.newTaskName = '';
             let result = await response.json();
             if (!response.ok) {
-              this.showFlashMsg(result.error);
+              this.showFlashMsg(this.getError(result));
               return;
             }
             this.taskList.push(result.data);
             this.showFlashMsg(result.message, false);
           } catch (e) {
-            console.log(e);
+            this.showFlashMsg(this.getError(e));
           }
         },
 
@@ -190,13 +190,13 @@
             this.newTaskName = '';
             let result = await response.json();
             if (!response.ok) {
-              this.showFlashMsg(result.error);
+              this.showFlashMsg(this.getError(result));
               return;
             }
             this.removeTaskCompleted(taskID);
             this.showFlashMsg(result.message, false);
           } catch (e) {
-            console.error(e);
+            this.showFlashMsg(this.getError(e));
           }
         },
 
@@ -214,13 +214,13 @@
             });
             let result = await response.json();
             if (!response.ok) {
-              this.showFlashMsg(result.error);
+              this.showFlashMsg(getError(result));
               return;
             }
             this.removeTaskCompleted(this.taskID);
             this.showFlashMsg(result.message, false);
           } catch (e) {
-            console.error(e);
+            this.showFlashMsg(getError(e));
           } finally {
             this.performDeleteAction = false;
             this.confirmModelOpen = !this.confirmModelOpen;
@@ -237,10 +237,19 @@
         },
         async showFlashMsg(msg, error = true) {
           this.message = msg;
-          this.error = error;
+          this.errorType = error;
           setTimeout(() => {
             this.message = ''
           }, 2000)
+        },
+        getError(errObj) {
+          let err = "Something went wrong !";
+          if (errObj.message) {
+            err = errObj.message
+          } else if (errObj.error) {
+            err = errObj.error;
+          }
+          return err;
         }
 
       }));// End manageTasks directive
